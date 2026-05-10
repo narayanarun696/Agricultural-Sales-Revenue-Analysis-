@@ -1,0 +1,20 @@
+ADF Pipeline — pipeline_agri_etl
+
+Trigger: Daily scheduled trigger (configurable) + event-based trigger on new file arrival
+#Activities:
+1.Copy Activity — Ingests raw CSV/Excel from source into Azure Blob Storage
+2.Data Flow — Applies transformation logic (type casting, null handling, column derivation)
+3.Stored Procedure Activity — Loads cleaned data into Azure SQL staging table
+4.Validation Activity — Checks row counts before proceeding
+
+Power BI Auto-Refresh
+1.Connected to Azure SQL via On-premises Data Gateway
+2.Refresh triggered automatically on ADF pipeline success via Power BI REST API (called from ADF Web Activity)
+3.Scheduled fallback refresh also configured in Power BI Service
+
+Dashboard Features
+1.Interactive slicers — filter by date, product, and region
+2.Dynamic KPI cards — instant snapshot of revenue vs. target
+3.Drill-through pages — deep-dive from summary to detail views
+4.Time intelligence — MoM, YoY comparisons via DAX
+5.Clean star schema data model — optimised relationships for performance
